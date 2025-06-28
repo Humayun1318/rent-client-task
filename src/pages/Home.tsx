@@ -1,14 +1,9 @@
-import Header from '../components/Header/Header';
-import ProgressBar from '../components/ProgressBar';
 import SelectionLists from '../components/SelectionlIst/SelectionLIst';
 
 const Home = () => {
   return (
-    <div>
-      <Header text="Exit" />
+    <div className="">
       <SelectionLists />
-      {/* <ProgressBar /> */}
-      
     </div>
   );
 };
