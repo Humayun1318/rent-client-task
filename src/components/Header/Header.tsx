@@ -1,0 +1,18 @@
+const Header = ({ text }: { text: string }) => {
+  return (
+    <div className="flex items-center justify-between border-b-1 border-b-gray-200 py-4">
+      <div className="w-[150px] h-[40px]">
+        <img
+          src="./logo.png"
+          alt="logo"
+          className="w-full h-full  object-contain"
+        />
+      </div>
+      <div className="border border-gray-200 px-6 py-3 font-semibold">
+        <button>{text}</button>
+      </div>
+    </div>
+  );
+};
+
+export default Header;
