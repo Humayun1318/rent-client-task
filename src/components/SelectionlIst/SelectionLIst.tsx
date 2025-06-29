@@ -1,7 +1,17 @@
+import useProperty from '../../contexts/PropertyContext/useProperty';
 import { propertyTypes, roles } from '../../data/selectionlist/selectionList';
 import BoxCard from '../ui/BoxCard';
 
 function SelectionLists() {
+  const {
+    selectedProperty,
+    setSelectedProperty,
+    selectedRole,
+    setSelectedRole,
+  } = useProperty();
+
+  // console.log(selectedProperty, selectedRole);
+
   return (
     <div className="space-y-8">
       <div>
@@ -13,7 +23,13 @@ function SelectionLists() {
               icon={type.icon}
               title={type.name}
               description={type.description}
-              className="flex-1 hover:bg-gray-50 rounded"
+              className={`flex-1 hover:bg-gray-50 rounded 
+                ${type.name === selectedProperty ? 'focus:ring-1 ring-1 ring-[#316EED] bg-[#F9FBFF]' : ''}`}
+              onClick={() => {
+                const newValue =
+                  selectedProperty === type.name ? null : type.name;
+                setSelectedProperty(newValue);
+              }}
             ></BoxCard>
           ))}
         </div>
@@ -28,7 +44,12 @@ function SelectionLists() {
               icon={role.icon}
               title={role.name}
               description={role.description}
-              className="flex-1 hover:bg-gray-50 rounded"
+              className={`flex-1 hover:bg-gray-50 rounded 
+                ${role.name === selectedRole ? 'focus:ring-1 ring-1 ring-[#316EED] bg-[#F9FBFF]' : ''}`}
+              onClick={() => {
+                const newValue = selectedRole === role.name ? null : role.name;
+                setSelectedRole(newValue);
+              }}
             ></BoxCard>
           ))}
         </div>
