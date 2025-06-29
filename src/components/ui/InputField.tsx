@@ -23,7 +23,7 @@ export const InputField = ({
   className = '',
   note,
 }: InputFieldProps) => (
-  <div className={`mb-4 ${className}`}>
+  <div className={`${className}`}>
     <label className="block text-sm font-medium text-gray-700 mb-1">
       {label}
       {required && <span className="text-red-500">*</span>}

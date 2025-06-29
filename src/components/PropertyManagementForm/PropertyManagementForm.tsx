@@ -165,7 +165,7 @@ const PropertyManagementForm = () => {
           />
         )}
 
-      <button type="submit" className={`p-4 bg-blue-500`}>
+      <button type="submit" className={`p-4 bg-blue-500 hidden`}>
         Submit Application
       </button>
     </form>

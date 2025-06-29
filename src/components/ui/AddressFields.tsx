@@ -3,6 +3,9 @@ import { InputField } from './InputField';
 interface AddressFieldsProps {
   prefix?: string;
   values: {
+    identifier: string;
+    aprtmentUnit: string;
+    website: string;
     country: string;
     street: string;
     apt: string;
@@ -19,7 +22,29 @@ export const AddressFields = ({
   onInputChange,
 }: AddressFieldsProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 md:gap-4 gap-2">
+      <InputField
+        label="Property name as identifier"
+        name={`${prefix}identifier`}
+        type="text"
+        value={values.identifier}
+        onChange={onInputChange}
+        required
+      />
+      <InputField
+        label="Total apartment unit"
+        type="number"
+        name={`${prefix}aprtmentUnit`}
+        value={values.aprtmentUnit}
+        onChange={onInputChange}
+        required
+      />
+      <InputField
+        label="Property website"
+        name={`${prefix}website`}
+        value={values.website}
+        onChange={onInputChange}
+      />
       <InputField
         label="Country/Region"
         name={`${prefix}country`}

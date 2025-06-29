@@ -1,4 +1,7 @@
+import { useLocation } from 'react-router';
+
 const Header = ({ text }: { text: string }) => {
+  const location = useLocation();
   return (
     <div className="flex items-center justify-between border-b-1 border-b-gray-200 py-4">
       <div className="w-[150px] h-[40px]">
@@ -9,7 +12,7 @@ const Header = ({ text }: { text: string }) => {
         />
       </div>
       <div className="border border-gray-200 px-6 py-3 font-semibold">
-        <button>{text}</button>
+        <button>{`${location.pathname !== '/' ? 'Save & Exit' : `${text}`}`}</button>
       </div>
     </div>
   );

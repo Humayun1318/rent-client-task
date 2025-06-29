@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import Header from '../components/Header/Header';
 import { useEffect, useState } from 'react';
 import useProperty from '../contexts/PropertyContext/useProperty';
@@ -7,12 +7,12 @@ const RootLayout = () => {
   const [currentSegment, setCurrentSegment] = useState(0);
   const totalSegments = 3;
   const { selectedRole, selectedProperty, getStartedBtn } = useProperty();
-  // const [startedBtn, setStartedBtn] = useState<boolean>(getStartedBtn);
-
-  // const startedBtn = getStartedBtn;
+  const navigate = useNavigate();
+  const location = useLocation();
   // console.log('hefefe', selectedProperty, selectedRole);
 
   const handleClick = () => {
+    navigate('/condominiums');
     setCurrentSegment((prev) => (prev < totalSegments ? prev + 1 : 0));
   };
   return (
@@ -46,7 +46,12 @@ const RootLayout = () => {
 
       {/* Footer with max-width */}
       <footer className="w-full max-w-7xl mx-auto px-4 xl:px-0 py-4 flex justify-between items-center">
-        <button className="font-semibold underline">Back</button>
+        <button
+          className="font-semibold underline"
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </button>
         <button
           className={`px-6 py-3 rounded-xl font-semibold text-white transition-colors
          ${
@@ -58,7 +63,7 @@ const RootLayout = () => {
           onClick={handleClick}
           aria-disabled={!getStartedBtn}
         >
-          Get started
+          {`${location.pathname !== '/' ? 'Next' : `Get started`}`}
         </button>
       </footer>
     </div>
