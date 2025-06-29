@@ -35,17 +35,12 @@ interface FormData {
 
 const PropertyManagementForm = () => {
   const [formData, setFormData] = useState<FormData>({
-    // Proof of Ownership
     ownershipDoc: null,
     ownershipTermsAccepted: false,
-
-    // Realtor Verification
     licenseNumber: '',
     realtorAdditionalDocs: null,
     realtorLandlordAgreement: null,
     realtorTermsAccepted: false,
-
-    // Company Info
     companyName: '',
     companyIdentifier: '',
     jobTitle: '',
@@ -63,10 +58,8 @@ const PropertyManagementForm = () => {
     companyTermsAccepted: false,
   });
 
-  const { selectedProperty, selectedRole, setGetStartedBtn, getStartedBtn } =
-    useProperty();
+  const { selectedProperty, selectedRole, setGetStartedBtn } = useProperty();
 
-  // Handle regular input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
 
@@ -88,7 +81,6 @@ const PropertyManagementForm = () => {
     }
   };
 
-  // Handle file uploads
   const handleFileChange = (name: string, file: File | null) => {
     setFormData((prev) => ({
       ...prev,
@@ -99,32 +91,44 @@ const PropertyManagementForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Here you would typically send the data to your API
   };
 
   useEffect(() => {
     if (
-      (formData.ownershipDoc && formData.ownershipTermsAccepted) ||
+      (formData.ownershipDoc &&
+        formData.ownershipTermsAccepted &&
+        selectedRole === 'Landlord') ||
       (formData.licenseNumber &&
         formData.realtorLandlordAgreement &&
-        formData.realtorTermsAccepted)
+        formData.realtorTermsAccepted &&
+        selectedRole === 'Realtor') ||
+      (formData.companyName &&
+        formData.companyIdentifier &&
+        formData.jobTitle &&
+        formData.companyLandlordAgreement &&
+        formData.companyTermsAccepted) ||
+      (formData.companyName &&
+        formData.companyIdentifier &&
+        formData.jobTitle &&
+        formData.companyLandlordAgreement &&
+        formData.companyAddress.country &&
+        formData.companyAddress.street &&
+        formData.companyAddress.city &&
+        formData.companyAddress.state &&
+        formData.companyAddress.zip &&
+        formData.phone &&
+        formData.email &&
+        formData.companyTermsAccepted &&
+        selectedRole === 'Property management company')
     ) {
       setGetStartedBtn(true);
     } else {
-      setGetStartedBtn(false); // optional: reset if not satisfied
+      setGetStartedBtn(false);
     }
-  }, [
-    formData.ownershipDoc,
-    formData.ownershipTermsAccepted,
-    formData.licenseNumber,
-    formData.realtorLandlordAgreement,
-    formData.realtorTermsAccepted,
-    setGetStartedBtn,
-  ]);
+  }, [selectedRole, formData, setGetStartedBtn]);
 
   return (
     <form onSubmit={handleSubmit} className="my-8">
-      {/* Proof of Ownership */}
       {selectedProperty === 'Condominiums' && selectedRole === 'Landlord' && (
         <ProofOfOwnershipForm
           ownershipDoc={formData.ownershipDoc}
@@ -134,7 +138,6 @@ const PropertyManagementForm = () => {
         />
       )}
 
-      {/* Realtor Vrrification */}
       {selectedProperty === 'Condominiums' && selectedRole === 'Realtor' && (
         <RealtorVerificationForm
           licenseNumber={formData.licenseNumber}
@@ -146,21 +149,21 @@ const PropertyManagementForm = () => {
         />
       )}
 
-      {/* Company information */}
-      {selectedProperty === 'Condominiums' && selectedRole === 'Realtor' && (
-        <CompanyInfoForm
-          companyName={formData.companyName}
-          companyIdentifier={formData.companyIdentifier}
-          jobTitle={formData.jobTitle}
-          landlordAgreement={formData.companyLandlordAgreement}
-          address={formData.companyAddress}
-          phone={formData.phone}
-          email={formData.email}
-          termsAccepted={formData.companyTermsAccepted}
-          onInputChange={handleInputChange}
-          onFileChange={handleFileChange}
-        />
-      )}
+      {selectedProperty === 'Condominiums' &&
+        selectedRole === 'Property management company' && (
+          <CompanyInfoForm
+            companyName={formData.companyName}
+            companyIdentifier={formData.companyIdentifier}
+            jobTitle={formData.jobTitle}
+            landlordAgreement={formData.companyLandlordAgreement}
+            address={formData.companyAddress}
+            phone={formData.phone}
+            email={formData.email}
+            termsAccepted={formData.companyTermsAccepted}
+            onInputChange={handleInputChange}
+            onFileChange={handleFileChange}
+          />
+        )}
 
       <button type="submit" className={`p-4 bg-blue-500`}>
         Submit Application

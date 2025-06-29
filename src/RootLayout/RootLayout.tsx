@@ -10,7 +10,7 @@ const RootLayout = () => {
   // const [startedBtn, setStartedBtn] = useState<boolean>(getStartedBtn);
 
   // const startedBtn = getStartedBtn;
-  console.log('hefefe', selectedProperty, selectedRole);
+  // console.log('hefefe', selectedProperty, selectedRole);
 
   const handleClick = () => {
     setCurrentSegment((prev) => (prev < totalSegments ? prev + 1 : 0));

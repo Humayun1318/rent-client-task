@@ -18,14 +18,15 @@ export const CheckboxField = ({
   className = '',
 }: CheckboxFieldProps) => (
   <div className={`flex items-center ${className}`}>
-    <input
-      type="checkbox"
-      name={name}
-      checked={checked}
-      onChange={onChange}
-      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-    />
-    <label className="ml-2 block text-sm text-gray-700">
+    <label className="ml-2 flex items-center gap-3 text-sm text-gray-700">
+      <input
+        type="checkbox"
+        name={name}
+        checked={checked}
+        onChange={onChange}
+        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+      />
+
       {label}
       {required && <span className="text-red-500">*</span>}
     </label>
