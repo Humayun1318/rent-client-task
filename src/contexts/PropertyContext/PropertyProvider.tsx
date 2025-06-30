@@ -5,6 +5,7 @@ const PropertyProvider = ({ children }: { children: ReactNode }) => {
   const [selectedProperty, setSelectedProperty] = useState<string | null>(null);
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [getStartedBtn, setGetStartedBtn] = useState<boolean>(false);
+  const [pricing, setPricing] = useState<number>(0);
 
   return (
     <PropertyContext.Provider
@@ -15,6 +16,8 @@ const PropertyProvider = ({ children }: { children: ReactNode }) => {
         setSelectedRole,
         getStartedBtn,
         setGetStartedBtn,
+        pricing,
+        setPricing,
       }}
     >
       {children}

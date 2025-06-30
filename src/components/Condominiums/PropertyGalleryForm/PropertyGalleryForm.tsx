@@ -71,7 +71,7 @@ const PropertyGalleryForm = () => {
           Featured photos <span className="text-red-500">*</span>
         </h3>
 
-        <div className="flex flex-col md:flex-row gap-4 md:h-[90%]">
+        <div className="flex flex-col md:flex-row gap-4 h-[90%]">
           {/* Cover Photo Upload */}
           <div className="w-full md:w-1/2">
             <div
@@ -101,16 +101,16 @@ const PropertyGalleryForm = () => {
                   <p className="text-sm font-medium text-gray-700">
                     Upload cover photo
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">(URL prep only)</p>
+                  <p className="text-xs text-gray-500 mt-1">(jpg, png only)</p>
                 </>
               )}
             </div>
           </div>
 
           {/* Additional Featured Photos */}
-          <div className="grid sm:grid-cols-2 gap-3 md:w-[90%] ">
+          <div className="grid sm:grid-cols-2 gap-3 md:w-[50%] ">
             {Array.from({ length: 4 }).map((_, index) => (
-              <div key={index} className="">
+              <div key={index} className="aspect-square">
                 {featuredPhotos[index + 1] ? (
                   <div className="relative h-full w-full rounded-lg overflow-hidden border border-gray-200">
                     <img

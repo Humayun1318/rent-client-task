@@ -12,6 +12,7 @@ import PropertyGalleryForm from '../components/Condominiums/PropertyGalleryForm/
 import { RentSchedule } from '../components/Condominiums/RentSchedule/RentSchedule';
 import { PetFees } from '../components/Condominiums/SectionHeader/PetFees/PetFees';
 import { UtilityProvider } from '../components/Condominiums/UtilityProvider/UtilityProvider';
+import VideoUploadForm from '../components/Condominiums/VideoUploadForm/VideoUploadForm';
 
 const CondominiumsInfo = () => {
   return (
@@ -75,7 +76,6 @@ const CondominiumsInfo = () => {
           </div>
         </section>
       </div>
-
       {/* for iamge */}
       <section className="mt-16 rounded-xl border border-gray-300">
         <h4 className="border-b border-gray-300 py-4 px-4">
@@ -88,6 +88,10 @@ const CondominiumsInfo = () => {
         <div className="p-4">
           <PropertyGalleryForm />
         </div>
+      </section>
+      {/* for video */}
+      <section className='mt-12'>
+        <VideoUploadForm />
       </section>
     </div>
   );

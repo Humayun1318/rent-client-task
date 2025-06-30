@@ -1,4 +1,8 @@
-import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
+import {
+  PencilSquareIcon,
+  TrashIcon,
+  CreditCardIcon,
+} from '@heroicons/react/24/outline';
 
 interface ContentCardProps {
   content: string;
@@ -6,6 +10,7 @@ interface ContentCardProps {
   onDelete?: () => void;
   className?: string;
   note?: string;
+  cardIcon?: boolean;
 }
 
 export const DataCard = ({
@@ -14,6 +19,7 @@ export const DataCard = ({
   onDelete,
   note = '',
   className = '',
+  cardIcon = false,
 }: ContentCardProps) => {
   return (
     <div
@@ -21,7 +27,16 @@ export const DataCard = ({
     >
       {/* Content */}
       <p className="text-gray-700 flex-1 pr-4">
-        {content} <span className="text-[#6F6C6A]">{note}</span>
+        {cardIcon === true ? (
+          <span className="flex items-center gap-3">
+            <CreditCardIcon className="h-4 w-4"></CreditCardIcon>
+            {content} <span className="text-[#6F6C6A]">{note}</span>
+          </span>
+        ) : (
+          <span>
+            {content} <span className="text-[#6F6C6A]">{note}</span>
+          </span>
+        )}
       </p>
 
       {/* Action Buttons */}

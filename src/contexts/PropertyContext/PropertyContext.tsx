@@ -8,5 +8,7 @@ export const PropertyContext = createContext<PropertyContextState>({
   setSelectedProperty: () => {},
   setSelectedRole: () => {},
   setGetStartedBtn: () => {},
+  setPricing: () => {},
   getStartedBtn: false,
+  pricing: 0,
 });
