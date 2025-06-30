@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { SectionHeader } from '../Condominiums/SectionHeader/SectionHeader';
-import Modal from '../ui/Modal';
-import { AddressFields } from '../ui/AddressFields';
+import { SectionHeader } from '../SectionHeader/SectionHeader';
+import Modal from '../../ui/Modal';
+import { AddressFields } from '../../ui/AddressFields';
 import { DataCard } from '../DataCard/DataCard';
 
 interface AddressData {
@@ -16,7 +16,7 @@ interface AddressData {
   zip: string;
 }
 
-export const CondominiumsSectionCard = () => {
+export const PropertyAdress = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [addressDatas, setAddressDatas] = useState<AddressData[]>([]);
   const [address, setAddress] = useState<AddressData>({

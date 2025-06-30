@@ -12,7 +12,6 @@ interface ProofOfOwnershipFormProps {
 }
 
 export const ProofOfOwnershipForm = ({
-  ownershipDoc,
   termsAccepted,
   onFileChange,
   onInputChange,

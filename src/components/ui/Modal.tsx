@@ -8,6 +8,7 @@ interface ModalProps {
   onSubmit?: () => void;
   submitText?: string;
   cancelText?: string;
+  note?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -17,6 +18,7 @@ const Modal: React.FC<ModalProps> = ({
   children,
   onSubmit,
   submitText = 'Add',
+  note = '',
 }) => {
   if (!isOpen) {
     return null;
@@ -56,14 +58,17 @@ const Modal: React.FC<ModalProps> = ({
           )}
         </div>
 
-        <div className=" border-t border-gray-200  flex justify-end p-4">
+        <div className=" border-t border-gray-200  flex justify-between items-center p-4">
           {onSubmit && (
-            <button
-              onClick={onSubmit}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            >
-              {submitText}
-            </button>
+            <>
+              <span>{`${note}`}</span>
+              <button
+                onClick={onSubmit}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              >
+                {submitText}
+              </button>
+            </>
           )}
         </div>
       </div>

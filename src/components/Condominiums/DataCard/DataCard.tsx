@@ -5,12 +5,14 @@ interface ContentCardProps {
   onEdit?: () => void;
   onDelete?: () => void;
   className?: string;
+  note?: string;
 }
 
 export const DataCard = ({
   content,
   onEdit,
   onDelete,
+  note = '',
   className = '',
 }: ContentCardProps) => {
   return (
@@ -18,7 +20,9 @@ export const DataCard = ({
       className={`flex justify-between items-center p-4 bg-white rounded-lg border border-gray-200 ${className}`}
     >
       {/* Content */}
-      <p className="text-gray-700 flex-1 pr-4">{content}</p>
+      <p className="text-gray-700 flex-1 pr-4">
+        {content} <span className="text-[#6F6C6A]">{note}</span>
+      </p>
 
       {/* Action Buttons */}
       <div className="flex gap-2">

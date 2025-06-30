@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import { ArrowUpTrayIcon } from '@heroicons/react/24/outline';
 
-
 interface DocumentUploadProps {
   label: string;
   name: string;
   required?: boolean;
   note?: string;
+  accept?: string;
+  type?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const DocumentUpload = ({
   label,
   name,
+  type = 'file',
   required = false,
+  accept = 'application/pdf',
   note = '(Pdf only)',
   onChange,
 }: DocumentUploadProps) => {
   const [fileName, setFileName] = useState<string | null>(null);
-
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -51,8 +53,8 @@ export const DocumentUpload = ({
           </div>
         )}
         <input
-          type="file"
-          accept="application/pdf"
+          type={type}
+          accept={accept}
           id={name}
           name={name}
           onChange={handleChange}
