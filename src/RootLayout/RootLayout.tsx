@@ -2,6 +2,7 @@ import { Outlet, useLocation, useNavigate } from 'react-router';
 import Header from '../components/Header/Header';
 import { useState } from 'react';
 import useProperty from '../contexts/PropertyContext/useProperty';
+import { toast } from 'react-hot-toast';
 
 const RootLayout = () => {
   const [currentSegment, setCurrentSegment] = useState(0);
@@ -18,6 +19,9 @@ const RootLayout = () => {
         : 'Next';
 
   const handleClick = () => {
+    if (location.pathname === '/payment') {
+      toast.error('This feature has not been implemented yet!!');
+    }
     if (location.pathname === '/condominiums') {
       navigate('/payment');
       setCurrentSegment((prev) => (prev < totalSegments ? prev + 1 : 0));

@@ -14,7 +14,7 @@ export const FeeInformation = () => {
   const [fees, setFees] = useState<FeeData[]>([]);
   const [currentFee, setCurrentFee] = useState<FeeData>({
     applicationFee: '',
-     appliesTo: 'All 18+ applicants',
+    appliesTo: 'All 18+ applicants',
     adminFee: '',
   });
   const [editingIndex, setEditingIndex] = useState<number | null>(null);

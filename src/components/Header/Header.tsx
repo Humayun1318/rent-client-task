@@ -13,7 +13,9 @@ const Header = ({ text }: { text: string }) => {
         />
       </div>
       <div className="border border-gray-200 px-6 py-3 font-semibold">
-        <button>{`${location.pathname !== '/' ? 'Save & Exit' : `${text}`}`}</button>
+        <button
+          onClick={() => navigate('/')}
+        >{`${location.pathname !== '/' ? 'Save & Exit' : `${text}`}`}</button>
       </div>
     </div>
   );

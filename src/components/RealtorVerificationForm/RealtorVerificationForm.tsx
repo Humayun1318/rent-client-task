@@ -15,8 +15,6 @@ interface RealtorVerificationFormProps {
 
 export const RealtorVerificationForm = ({
   licenseNumber,
-  additionalDocs,
-  landlordAgreement,
   realtorTermsAccepted,
   onInputChange,
   onFileChange,

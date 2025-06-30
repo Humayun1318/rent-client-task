@@ -1,4 +1,3 @@
-
 import PricingPlans from '../components/Payment/PricingPlans/PricingPlans';
 
 const Payment = () => {

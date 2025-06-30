@@ -73,7 +73,6 @@ export const RentSchedule = () => {
     }
     return `${day}${suffix}`;
   });
-  
 
   return (
     <div className="space-y-4">

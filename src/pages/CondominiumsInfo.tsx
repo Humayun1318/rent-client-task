@@ -90,7 +90,7 @@ const CondominiumsInfo = () => {
         </div>
       </section>
       {/* for video */}
-      <section className='mt-12'>
+      <section className="mt-12">
         <VideoUploadForm />
       </section>
     </div>
